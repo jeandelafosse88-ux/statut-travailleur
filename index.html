@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Statut Travailleur — maquette</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#F6F4EE;--card:#fff;--ink:#16243B;--mute:#5E6B7E;--line:#DDD9CE;--ok:#1E7B55;--okbg:#DDF0E5;--ko:#B8381F;--kobg:#F9E1DA;--acc:#16243B;--accfg:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1826;--card:#18253A;--ink:#EEF0F4;--mute:#9AA6B8;--line:#2B3A52;--ok:#6FD3A3;--okbg:#17382C;--ko:#FF9A82;--kobg:#42231C;--acc:#F2A33A;--accfg:#16243B}}
+:root[data-theme="dark"]{--bg:#0F1826;--card:#18253A;--ink:#EEF0F4;--mute:#9AA6B8;--line:#2B3A52;--ok:#6FD3A3;--okbg:#17382C;--ko:#FF9A82;--kobg:#42231C;--acc:#F2A33A;--accfg:#16243B}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+.app{max-width:440px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.demo{background:var(--ink);color:var(--bg);font-size:13px;padding:8px 16px;text-align:center}
+main{flex:1;padding:20px 16px 90px}
+h1{font-size:30px;line-height:1.1;font-weight:800;margin:8px 0 10px}
+h2{font-size:20px;font-weight:600;margin:0 0 8px}
+p{margin:0 0 12px;color:var(--mute)}
+label{font-weight:600;display:block;margin-bottom:6px}
+input{width:100%;font:inherit;padding:14px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input:focus,button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn{width:100%;font:600 16px inherit;font-family:inherit;padding:15px;border:0;border-radius:10px;background:var(--acc);color:var(--accfg);margin-top:12px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+.big{border-radius:14px;padding:20px;margin:12px 0}
+.big.ok{background:var(--okbg);color:var(--ok)}.big.ko{background:var(--kobg);color:var(--ko)}
+.big b{display:block;font-size:24px;line-height:1.2;margin-bottom:4px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.tag{font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px}
+.tag.ok{background:var(--okbg);color:var(--ok)}.tag.ko{background:var(--kobg);color:var(--ko)}
+.msg{background:var(--bg);border-left:4px solid var(--acc);padding:12px;border-radius:6px;color:var(--ink);font-size:15px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav div{max-width:440px;margin:0 auto;display:flex}
+nav button{flex:1;font:600 14px inherit;font-family:inherit;padding:14px 4px;border:0;background:none;color:var(--mute);cursor:pointer;border-top:3px solid transparent}
+nav button[aria-current="true"]{color:var(--ink);border-top-color:var(--acc)}
+.case{display:flex;gap:8px;margin-top:16px}.case button{flex:1;margin:0;padding:11px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="demo">Maquette de démonstration : données fictives, aucune connexion à la CNPS</div>
+<main id="v"></main>
+</div>
+<nav id="nav" hidden><div>
+<button data-s="statut">Mon statut</button><button data-s="cotis">Cotisations</button><button data-s="agir">Agir</button>
+</div></nav>
+<script>
+var S={screen:"accueil",ok:true,tel:""};
+var MOIS=["Avril","Mai","Juin","Juillet","Août","Septembre"];
+function cotRows(){return MOIS.map(function(m,i){
+ var paid=S.ok?(i!==3):false;
+ return '<div class="row"><span>'+m+' 2026</span><span class="tag '+(paid?'ok':'ko')+'">'+(paid?'Payée':(S.ok?'Non reçue':'Aucune'))+'</span></div>';}).join("");}
+var V={
+accueil:function(){return '<h1>Êtes-vous déclaré à la CNPS ?</h1><p>Vérifiez votre statut en 30 secondes. Votre retraite et vos droits en dépendent.</p>'+
+ '<label for="t">Votre numéro de téléphone</label><input id="t" inputmode="tel" placeholder="07 00 00 00 00" value="'+S.tel+'">'+
+ '<button class="btn" id="go">Vérifier mon statut</button>'+
+ '<div class="case"><button class="btn alt" data-c="1">Voir un cas déclaré</button><button class="btn alt" data-c="0">Voir un cas non déclaré</button></div>';},
+statut:function(){return S.ok?
+ '<h1>Mon statut</h1><div class="big ok"><b>Vous êtes déclaré</b>Employeur : Entreprise Exemple BTP SARL</div>'+
+ '<div class="card"><div class="row"><span>Poste</span><span>Aide-conducteur</span></div><div class="row"><span>Déclaré depuis</span><span>Janvier 2025</span></div><div class="row"><span>Cotisations 6 derniers mois</span><span>5 sur 6</span></div></div>'+
+ '<p>Un mois de cotisation n\'apparaît pas. Consultez l\'onglet Cotisations.</p>':
+ '<h1>Mon statut</h1><div class="big ko"><b>Aucune déclaration trouvée</b>Nous ne voyons aucun employeur déclaré à votre nom.</div>'+
+ '<p>Si vous travaillez régulièrement, votre employeur doit vous déclarer dès le jour de l\'embauche. Vous pouvez agir.</p><button class="btn" data-s="agir">Voir comment agir</button>';},
+cotis:function(){return '<h1>Mes cotisations</h1><p>'+(S.ok?'Suivi des 6 derniers mois.':'Aucune cotisation enregistrée à votre nom.')+'</p><div class="card">'+cotRows()+'</div>';},
+agir:function(){return '<h1>Agir</h1><p>Des étapes simples, de la plus douce à la plus ferme.</p>'+
+ '<div class="card"><h2>1. Demander à votre employeur</h2><p>Envoyez ce message type par WhatsApp :</p><div class="msg">Bonjour, je voudrais être sûr(e) d\'être déclaré(e) à la CNPS. Pouvez-vous me confirmer mon numéro de sécurité sociale ?</div><button class="btn alt" id="cp">Copier le message</button></div>'+
+ '<div class="card"><h2>2. Se rendre à une agence CNPS</h2><p>Trouvez l\'agence la plus proche de vous avec les pièces à apporter.</p></div>'+
+ '<div class="card"><h2>3. Signaler en confidentialité</h2><p>Votre signalement est transmis sans votre nom à l\'employeur. Fonction prévue avec la CNPS.</p></div>';}
+};
+function draw(){
+ var v=document.getElementById("v");v.innerHTML=V[S.screen]();
+ document.getElementById("nav").hidden=(S.screen==="accueil");
+ document.querySelectorAll("nav button").forEach(function(b){b.setAttribute("aria-current",b.dataset.s===S.screen)});
+ window.scrollTo(0,0);
+}
+document.addEventListener("click",function(e){
+ var t=e.target;
+ if(t.dataset&&t.dataset.s){S.screen=t.dataset.s;draw();return}
+ if(t.dataset&&t.dataset.c!==undefined){S.ok=t.dataset.c==="1";S.screen="statut";draw();return}
+ if(t.id==="go"){var i=document.getElementById("t");S.tel=i.value;S.ok=true;S.screen="statut";draw();return}
+ if(t.id==="cp"){t.textContent="Message copié";}
+});
+draw();
+</script>
+</body>
+</html>
