@@ -1,90 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Statut Travailleur — maquette</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#173f3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Statut-Travailleurs — Version de travail</title>
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#F6F4EE;--card:#fff;--ink:#16243B;--mute:#5E6B7E;--line:#DDD9CE;--ok:#1E7B55;--okbg:#DDF0E5;--ko:#B8381F;--kobg:#F9E1DA;--acc:#16243B;--accfg:#fff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1826;--card:#18253A;--ink:#EEF0F4;--mute:#9AA6B8;--line:#2B3A52;--ok:#6FD3A3;--okbg:#17382C;--ko:#FF9A82;--kobg:#42231C;--acc:#F2A33A;--accfg:#16243B}}
-:root[data-theme="dark"]{--bg:#0F1826;--card:#18253A;--ink:#EEF0F4;--mute:#9AA6B8;--line:#2B3A52;--ok:#6FD3A3;--okbg:#17382C;--ko:#FF9A82;--kobg:#42231C;--acc:#F2A33A;--accfg:#16243B}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
-.app{max-width:440px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
-.demo{background:var(--ink);color:var(--bg);font-size:13px;padding:8px 16px;text-align:center}
-main{flex:1;padding:20px 16px 90px}
-h1{font-size:30px;line-height:1.1;font-weight:800;margin:8px 0 10px}
-h2{font-size:20px;font-weight:600;margin:0 0 8px}
-p{margin:0 0 12px;color:var(--mute)}
-label{font-weight:600;display:block;margin-bottom:6px}
-input{width:100%;font:inherit;padding:14px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
-input:focus,button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.btn{width:100%;font:600 16px inherit;font-family:inherit;padding:15px;border:0;border-radius:10px;background:var(--acc);color:var(--accfg);margin-top:12px;cursor:pointer}
-.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
-.big{border-radius:14px;padding:20px;margin:12px 0}
-.big.ok{background:var(--okbg);color:var(--ok)}.big.ko{background:var(--kobg);color:var(--ko)}
-.big b{display:block;font-size:24px;line-height:1.2;margin-bottom:4px}
-.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.row:last-child{border:0}
-.tag{font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px}
-.tag.ok{background:var(--okbg);color:var(--ok)}.tag.ko{background:var(--kobg);color:var(--ko)}
-.msg{background:var(--bg);border-left:4px solid var(--acc);padding:12px;border-radius:6px;color:var(--ink);font-size:15px}
-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav div{max-width:440px;margin:0 auto;display:flex}
-nav button{flex:1;font:600 14px inherit;font-family:inherit;padding:14px 4px;border:0;background:none;color:var(--mute);cursor:pointer;border-top:3px solid transparent}
-nav button[aria-current="true"]{color:var(--ink);border-top-color:var(--acc)}
-.case{display:flex;gap:8px;margin-top:16px}.case button{flex:1;margin:0;padding:11px;font-size:14px}
+:root{--green:#173f3a;--green2:#246a5f;--gold:#f2bd4b;--bg:#f3f6f5;--card:#fff;--ink:#182b2a;--muted:#60716f;--line:#dce5e2;--warn:#fff3d2;--red:#a83e32}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.app{max-width:520px;margin:auto;min-height:100vh;background:var(--bg);padding-bottom:78px}
+header{background:var(--green);color:white;padding:20px 18px 18px;border-bottom:4px solid var(--gold)}
+.brand{font-weight:850;font-size:23px;letter-spacing:.2px}.tag{font-size:13px;opacity:.9;margin-top:4px}
+.notice{background:var(--warn);padding:10px 14px;font-size:12px;color:#62480b;border-bottom:1px solid #ead79d}
+main{padding:16px}
+h1{font-size:25px;line-height:1.15;margin:0 0 8px}h2{font-size:18px;margin:22px 0 10px}
+p{margin:0 0 12px}.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:12px 0}
+label{display:block;font-size:13px;font-weight:700;margin:10px 0 5px}
+input,select,textarea{width:100%;border:1px solid #bccbc6;border-radius:10px;padding:12px;font:inherit;background:white;color:#182b2a}
+button{font:inherit;cursor:pointer}.btn{border:0;background:var(--green);color:white;font-weight:750;border-radius:11px;padding:13px 15px;width:100%;margin-top:10px}
+.btn.secondary{background:white;color:var(--green);border:1px solid var(--green)}.btn.danger{background:#fff;color:var(--red);border:1px solid #d8aaa5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{border:1px solid var(--line);background:white;border-radius:13px;padding:14px;text-align:left;color:var(--ink);min-height:90px}.tile strong{display:block;font-size:15px}.tile span{display:block;font-size:12px;color:var(--muted);margin-top:5px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:white;border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom));z-index:4}
+nav button{border:0;background:white;color:var(--muted);font-size:12px;padding:7px 2px;border-radius:8px}nav button.active{background:#e7f1ee;color:var(--green);font-weight:800}
+.badge{display:inline-block;border-radius:99px;background:#e7f1ee;color:var(--green);padding:5px 9px;font-size:12px;font-weight:800}.warning{background:var(--warn);border:1px solid #ead79d;border-radius:10px;padding:11px;font-size:13px;color:#62480b}
+.item{padding:11px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.row{display:flex;gap:10px;align-items:center;justify-content:space-between}.status{font-size:12px;font-weight:800;border-radius:99px;padding:5px 8px;background:#edf0ef}.status.ok{background:#e0f3e7;color:#17623b}.status.check{background:#fff0d2;color:#80540b}
+.small{font-size:12px;color:var(--muted)}.empty{padding:20px 5px;text-align:center;color:var(--muted)}
+.hidden{display:none!important}.lockscreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--green)}.lockcard{width:100%;max-width:420px;background:white;border-radius:18px;padding:22px}.lockcard h1{color:var(--green)}.pininput{text-align:center;font-size:28px;letter-spacing:10px}
 </style>
 </head>
 <body>
-<div class="app">
-<div class="demo">Maquette de démonstration : données fictives, aucune connexion à la CNPS</div>
-<main id="v"></main>
+<div id="lockscreen" class="lockscreen"><div class="lockcard"><div class="brand" style="color:var(--green)">STATUT-TRAVAILLEURS</div><h1 id="lockTitle" style="margin-top:20px">Code de sécurité</h1><p id="lockText" class="muted">Saisissez votre code PIN pour accéder à votre espace.</p><form id="pinForm"><label for="pinInput">Code PIN à 4 chiffres</label><input id="pinInput" class="pininput" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" minlength="4" autocomplete="off" required placeholder="••••"><button class="btn" id="pinSubmit" type="submit">Continuer</button></form><p id="pinError" class="small" style="color:var(--red);margin-top:12px"></p><p class="small" style="margin-top:18px">Ne communiquez jamais votre code à une autre personne.</p></div></div>
+<div class="app" id="mainApp" style="display:none">
+<header><div class="brand">STATUT-TRAVAILLEURS</div><div class="tag">Mon travail, ma déclaration, mes droits.</div></header>
+<div class="notice"><strong>Version de travail :</strong> les informations saisies restent sur cet appareil dans ce prototype. Aucune connexion à la CNPS, aucun envoi ni vérification officielle.</div>
+<main id="view"></main>
+<nav id="nav">
+<button data-tab="home" class="active">Accueil</button>
+<button data-tab="profile">Mon profil</button>
+<button data-tab="periods">Mes périodes</button>
+<button data-tab="actions">Agir</button>
+</nav>
 </div>
-<nav id="nav" hidden><div>
-<button data-s="statut">Mon statut</button><button data-s="cotis">Cotisations</button><button data-s="agir">Agir</button>
-</div></nav>
 <script>
-var S={screen:"accueil",ok:true,tel:""};
-var MOIS=["Avril","Mai","Juin","Juillet","Août","Septembre"];
-function cotRows(){return MOIS.map(function(m,i){
- var paid=S.ok?(i!==3):false;
- return '<div class="row"><span>'+m+' 2026</span><span class="tag '+(paid?'ok':'ko')+'">'+(paid?'Payée':(S.ok?'Non reçue':'Aucune'))+'</span></div>';}).join("");}
-var V={
-accueil:function(){return '<h1>Êtes-vous déclaré à la CNPS ?</h1><p>Vérifiez votre statut en 30 secondes. Votre retraite et vos droits en dépendent.</p>'+
- '<label for="t">Votre numéro de téléphone</label><input id="t" inputmode="tel" placeholder="07 00 00 00 00" value="'+S.tel+'">'+
- '<button class="btn" id="go">Vérifier mon statut</button>'+
- '<div class="case"><button class="btn alt" data-c="1">Voir un cas déclaré</button><button class="btn alt" data-c="0">Voir un cas non déclaré</button></div>';},
-statut:function(){return S.ok?
- '<h1>Mon statut</h1><div class="big ok"><b>Vous êtes déclaré</b>Employeur : Entreprise Exemple BTP SARL</div>'+
- '<div class="card"><div class="row"><span>Poste</span><span>Aide-conducteur</span></div><div class="row"><span>Déclaré depuis</span><span>Janvier 2025</span></div><div class="row"><span>Cotisations 6 derniers mois</span><span>5 sur 6</span></div></div>'+
- '<p>Un mois de cotisation n\'apparaît pas. Consultez l\'onglet Cotisations.</p>':
- '<h1>Mon statut</h1><div class="big ko"><b>Aucune déclaration trouvée</b>Nous ne voyons aucun employeur déclaré à votre nom.</div>'+
- '<p>Si vous travaillez régulièrement, votre employeur doit vous déclarer dès le jour de l\'embauche. Vous pouvez agir.</p><button class="btn" data-s="agir">Voir comment agir</button>';},
-cotis:function(){return '<h1>Mes cotisations</h1><p>'+(S.ok?'Suivi des 6 derniers mois.':'Aucune cotisation enregistrée à votre nom.')+'</p><div class="card">'+cotRows()+'</div>';},
-agir:function(){return '<h1>Agir</h1><p>Des étapes simples, de la plus douce à la plus ferme.</p>'+
- '<div class="card"><h2>1. Demander à votre employeur</h2><p>Envoyez ce message type par WhatsApp :</p><div class="msg">Bonjour, je voudrais être sûr(e) d\'être déclaré(e) à la CNPS. Pouvez-vous me confirmer mon numéro de sécurité sociale ?</div><button class="btn alt" id="cp">Copier le message</button></div>'+
- '<div class="card"><h2>2. Se rendre à une agence CNPS</h2><p>Trouvez l\'agence la plus proche de vous avec les pièces à apporter.</p></div>'+
- '<div class="card"><h2>3. Signaler en confidentialité</h2><p>Votre signalement est transmis sans votre nom à l\'employeur. Fonction prévue avec la CNPS.</p></div>';}
-};
-function draw(){
- var v=document.getElementById("v");v.innerHTML=V[S.screen]();
- document.getElementById("nav").hidden=(S.screen==="accueil");
- document.querySelectorAll("nav button").forEach(function(b){b.setAttribute("aria-current",b.dataset.s===S.screen)});
- window.scrollTo(0,0);
-}
-document.addEventListener("click",function(e){
- var t=e.target;
- if(t.dataset&&t.dataset.s){S.screen=t.dataset.s;draw();return}
- if(t.dataset&&t.dataset.c!==undefined){S.ok=t.dataset.c==="1";S.screen="statut";draw();return}
- if(t.id==="go"){var i=document.getElementById("t");S.tel=i.value;S.ok=true;S.screen="statut";draw();return}
- if(t.id==="cp"){t.textContent="Message copié";}
+const KEY='statutTravailleursLocalV1';
+const PIN_KEY='statutTravailleursPinHashV1';
+let pinMode='unlock'; let failures=0; let blockedUntil=0; let unlocked=false;
+async function hashPin(pin){if(!crypto.subtle) throw new Error('Sécurité cryptographique indisponible');const bytes=new TextEncoder().encode('StatutTravailleurs-v1:'+pin);const digest=await crypto.subtle.digest('SHA-256',bytes);return Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+function showPinScreen(){document.getElementById('mainApp').style.display='none';document.getElementById('lockscreen').style.display='flex';const exists=!!localStorage.getItem(PIN_KEY);pinMode=exists?'unlock':'setup';document.getElementById('lockTitle').textContent=exists?'Code de sécurité':'Créer votre code PIN';document.getElementById('lockText').textContent=exists?'Saisissez votre code PIN à 4 chiffres pour accéder à votre espace.':'Choisissez un code PIN personnel à 4 chiffres. Vous le saisirez à chaque ouverture.';document.getElementById('pinSubmit').textContent=exists?'Déverrouiller':'Créer mon code';document.getElementById('pinInput').value='';document.getElementById('pinError').textContent='';}
+function unlockApp(){unlocked=true;document.getElementById('lockscreen').style.display='none';document.getElementById('mainApp').style.display='block';render()}
+
+const blank={name:'',workType:'Journalier',employer:'',city:'',periods:[]};
+let data;
+try{data=JSON.parse(localStorage.getItem(KEY))||structuredClone(blank)}catch(e){data={...blank,periods:[]}}
+let tab='home';
+const $=s=>document.querySelector(s);
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function pageHome(){return `<h1>Bienvenue</h1><p class="muted">Une première version pour organiser vos informations de travail et préparer vos démarches.</p>
+<div class="card"><span class="badge">Prototype local</span><h2>Votre espace de travail</h2><p>${data.name?`Bonjour, <strong>${esc(data.name)}</strong>.`:'Commencez par renseigner votre profil.'}</p><p class="muted">Cette version vous permet d'enregistrer des périodes de travail et de noter les informations que vous souhaitez vérifier. Elle ne confirme pas votre déclaration CNPS.</p><button class="btn" data-go="profile">${data.name?'Modifier mon profil':'Créer mon profil'}</button></div>
+<div class="grid"><button class="tile" data-go="profile"><strong>👤 Mon profil</strong><span>Vos informations de base</span></button><button class="tile" data-go="periods"><strong>📅 Mes périodes</strong><span>Organiser les périodes de travail</span></button><button class="tile" data-go="actions"><strong>🧭 Agir</strong><span>Préparer les prochaines démarches</span></button><button class="tile" data-export><strong>📄 Mes données</strong><span>Exporter une copie de vos notes</span></button></div>
+<div class="warning" style="margin-top:14px">Conseil : n'enregistrez pas ici votre numéro CNPS, mot de passe, pièce d'identité ou des informations sensibles. Ce prototype n'a pas encore de compte sécurisé.</div>`}
+function pageProfile(){return `<h1>Mon profil</h1><p class="muted">Renseignez uniquement les informations que vous souhaitez conserver sur ce téléphone.</p>
+<form id="profileForm" class="card"><label for="name">Nom ou prénom (facultatif)</label><input id="name" maxlength="80" value="${esc(data.name)}" placeholder="Ex. : Jean">
+<label for="workType">Type de travail</label><select id="workType"><option ${data.workType==='Journalier'?'selected':''}>Journalier</option><option ${data.workType==='Temporaire'?'selected':''}>Temporaire</option><option ${data.workType==='Permanent'?'selected':''}>Permanent</option><option ${data.workType==='Sous-traitance'?'selected':''}>Sous-traitance</option><option ${data.workType==='Indépendant'?'selected':''}>Indépendant</option><option ${data.workType==='Autre'?'selected':''}>Autre</option></select>
+<label for="employer">Nom de l'entreprise (facultatif)</label><input id="employer" maxlength="100" value="${esc(data.employer)}" placeholder="Nom de l'entreprise">
+<label for="city">Ville (facultatif)</label><input id="city" maxlength="80" value="${esc(data.city)}" placeholder="Ex. : Daloa">
+<button class="btn" type="submit">Enregistrer sur ce téléphone</button></form>
+<button class="btn secondary" data-change-pin>Modifier mon code PIN</button><button class="btn danger" data-clear>Effacer toutes mes données locales</button><p class="small">Les données sont enregistrées dans le stockage local du navigateur. Elles ne sont pas synchronisées entre appareils et peuvent être perdues si les données du navigateur sont effacées.</p>`}
+function pagePeriods(){return `<h1>Mes périodes de travail</h1><p class="muted">Ajoutez une période pour vous aider à organiser vos notes et documents.</p>
+<form id="periodForm" class="card"><label for="period">Mois et année</label><input id="period" type="month" required>
+<label for="periodEmployer">Employeur ou chantier (facultatif)</label><input id="periodEmployer" maxlength="100" placeholder="Nom de l'entreprise ou du chantier">
+<label for="note">Note personnelle (facultatif)</label><textarea id="note" rows="3" maxlength="300" placeholder="Ex. : retrouver ma fiche de paie pour cette période"></textarea>
+<button class="btn" type="submit">Ajouter la période</button></form>
+<div class="card"><h2>Mes notes enregistrées</h2>${data.periods.length?data.periods.slice().sort((a,b)=>b.month.localeCompare(a.month)).map(p=>`<div class="item"><div class="row"><strong>${esc(p.month)}</strong><button class="btn secondary" style="width:auto;margin:0;padding:7px 10px" data-delete="${p.id}">Supprimer</button></div><div>${esc(p.employer)||'<span class="small">Employeur non renseigné</span>'}</div><p class="muted" style="margin:5px 0 0">${esc(p.note)||'Aucune note'}</p><span class="status check">À vérifier officiellement si nécessaire</span></div>`).join(''):'<div class="empty">Aucune période enregistrée pour le moment.</div>'}</div>
+<div class="warning">Une période enregistrée ici ne signifie pas qu'une cotisation a été versée ou enregistrée à la CNPS.</div>`}
+function pageActions(){return `<h1>Agir</h1><p class="muted">Si vous avez un doute sur votre situation, voici des démarches prudentes.</p>
+<div class="card"><h2>1. Préparer vos justificatifs</h2><p>Réunissez les documents utiles que vous détenez : contrat, bulletin de paie, attestation, preuve de paiement ou dates de travail.</p></div>
+<div class="card"><h2>2. Demander une vérification officielle</h2><p>Contactez la CNPS par ses canaux officiels ou rendez-vous dans une agence pour demander comment vérifier votre situation.</p><p class="muted">Cette application n'envoie aucune demande à la CNPS.</p></div>
+<div class="card"><h2>3. Message à votre employeur (facultatif)</h2><p id="msg" class="bubble">Bonjour, pour mon dossier personnel, pourriez-vous m'indiquer comment vérifier ma déclaration à la CNPS et les périodes de cotisation concernées ? Merci.</p><button class="btn secondary" data-copy>Copier le message</button></div>
+<div class="warning">Le signalement confidentiel et la vérification automatique auprès de la CNPS ne sont pas disponibles dans cette version. Leur mise en place nécessitera un cadre validé avec les institutions concernées.</div>`}
+function render(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));$('#view').innerHTML=({home:pageHome,profile:pageProfile,periods:pagePeriods,actions:pageActions})[tab]()}
+document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
+if(b.hasAttribute('data-change-pin')){if(!confirm('Voulez-vous remplacer votre code PIN ?'))return;localStorage.removeItem(PIN_KEY);showPinScreen();return;}
+if(b.dataset.tab){tab=b.dataset.tab;render()}
+else if(b.dataset.go){tab=b.dataset.go;render()}
+else if(b.hasAttribute('data-clear')){if(confirm('Effacer toutes les données enregistrées sur ce téléphone ?')){data={...blank,periods:[]};save();render()}}
+else if(b.dataset.delete){data.periods=data.periods.filter(p=>p.id!==b.dataset.delete);save();render()}
+else if(b.hasAttribute('data-export')){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mes-notes-statut-travailleurs.json';a.click();URL.revokeObjectURL(a.href)}
+else if(b.hasAttribute('data-copy')){const text=$('#msg').innerText;try{await navigator.clipboard.writeText(text);alert('Message copié.')}catch(err){alert('La copie automatique n’est pas disponible sur ce navigateur. Vous pouvez sélectionner le texte et le copier manuellement.')}}});
+document.addEventListener('submit',async e=>{e.preventDefault();
+if(e.target.id==='pinForm'){const pin=$('#pinInput').value;if(!/^\d{4}$/.test(pin)){ $('#pinError').textContent='Entrez exactement 4 chiffres.';return;}if(Date.now()<blockedUntil){$('#pinError').textContent='Trop de tentatives. Réessayez dans quelques instants.';return;}try{const hash=await hashPin(pin);if(pinMode==='setup'){localStorage.setItem(PIN_KEY,hash);unlockApp();}else if(hash===localStorage.getItem(PIN_KEY)){failures=0;unlockApp();}else{failures++;$('#pinInput').value='';$('#pinError').textContent='Code incorrect.'+(failures>=3?' Accès bloqué pendant 30 secondes.':'');if(failures>=3){blockedUntil=Date.now()+30000;failures=0;}}}catch(err){$('#pinError').textContent='La fonction de sécurité n’est pas disponible dans ce navigateur. Ouvrez cette application avec Chrome à jour.';}return;}
+if(e.target.id==='profileForm'){data.name=$('#name').value.trim();data.workType=$('#workType').value;data.employer=$('#employer').value.trim();data.city=$('#city').value.trim();save();tab='home';render();alert('Profil enregistré sur ce téléphone.')}
+if(e.target.id==='periodForm'){const month=$('#period').value;if(!month)return;data.periods.push({id:Date.now().toString(),month,employer:$('#periodEmployer').value.trim(),note:$('#note').value.trim()});save();render();alert('Période enregistrée sur ce téléphone.')}
 });
-draw();
+showPinScreen();
 </script>
+<script>if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }</script>
 </body>
 </html>
